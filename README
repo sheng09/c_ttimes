@@ -27,7 +27,8 @@ INSTALL steps:
     make
     make install
 
-Note: "su" or "sudo" permission may be necessary for some your ttimes path
+Note: 
+"su" or "sudo" permission may be necessary for some (your ttimes path)
 
 =============  How to use ctau(...) and ftau(...) ========================
 Please view the example 'test_ctau.c' for code details
