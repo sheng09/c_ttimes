@@ -11,8 +11,7 @@ Related functions are 'ftaup(...)' for fortran, and 'ctaup(...)' for
 C language. Please open related files for detailed codes.
 
    An static library 'libctau.a' will be generate after installation.
-Thus you can call 'ctau(...)' by append '-lctau' to the compiling of your
-program.
+Thus you can call 'ctau(...)' by append '-lctau' to compile your programs.
 
    'test_ctau.c' is an example, which shows the usage of 'ctau(...)'
 function.
