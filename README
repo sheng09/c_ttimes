@@ -1,22 +1,23 @@
                                  C_ttimes
-   Some new toolkits like taup provides better experience than ttimes.
+   Some new toolkits like taup provide better experience than ttimes.
 However, ttimes is much faster for it is built by fortran but not java.
-Some seismologists require effiency for big data processing and thus a
-interface or a subroutine is required for calculating traveltime in
-programming.
+Some seismologists require high effiency for big data processing and 
+thus a interface or a subroutine is demanded for calculating traveltime
+in programming.
 
-   C_ttimes add 3 new files 'libftau.f', 'libctau.c', 'libctau.h' to
+   C_ttimes adds 3 new files 'libftau.f', 'libctau.c', 'libctau.h' to
 realize this subroutine requirement for FORTRAN or C language programming.
-Related functions are 'ftaup(...)' for fortran, and 'ctaup(...)' for
+Related functions are 'ftau(...)' for fortran, and 'ctau(...)' for
 C language. Please open related files for detailed codes.
 
-   An static library 'libctau.a' will be generate after installation.
-Thus you can call 'ctau(...)' by append '-lctau' to compile your programs.
+   An static library 'libctau.a' will be generated after installation.
+Thus you can call 'ctau(...)' by including libctau.h in your progroms, and
+appending '-lctau' to compile.
 
-   'test_ctau.c' is an example, which shows the usage of 'ctau(...)'
+   'test_ctau.c' is an example, which desmonstrates the usage of 'ctau(...)'
 function.
 
-   Slighty change is made to 'Makefile.in', so that INSTALLATION is same
+   Slight change is made to 'Makefile.in', so that INSTALLATION is same
 as original ttimes.
 
 ======================== How to install ==================================
