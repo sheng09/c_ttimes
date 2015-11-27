@@ -14,6 +14,7 @@ static char  phFound[MAX][8];
 static char  str_phFound[MAX][9];
 static int   nphFound;
 
+    
 /*
 ctau() is used to calculate traveltime, rayparameter... given phase name, depth and delta.
 
@@ -51,19 +52,38 @@ void ctau(char *strphase,        // Input phase name
     for(i = 0; strphase[i] != 0; ++i)
         phase[i] = strphase[i];
     memset((char*) phFound, 0, MAX * 8);
-    ftau_( phase, &h, &delta,
-                tt, dtdd, dtdh, dddp, mn, ts, toa,
+    //printf("%f %f\n", h, delta );
+
+    if(h < 1.0f)
+        h = 1.0f;
+    //if(h == 0.0) 
+    //   h = 1;
+    memset( (char *)tt,    0, 4*MAX );
+    memset( (char *)dtdd,  0, 4*MAX );
+    memset( (char *)dtdh,  0, 4*MAX );
+    memset( (char *)dddp,  0, 4*MAX );
+    memset( (char *)mn,    0, 4*MAX );
+    memset( (char *)ts,    0, 4*MAX );
+    memset( (char *)toa,   0, 4*MAX );
+    memset( (char *)phFound, 0, 8*MAX );
+    memset( (char *)str_phFound, 0, 9*MAX );
+
+    //printf("%f %f\n", depth, gcarc);
+
+    //printf("%p %p %f %f\n", &h, &delta, depth, gcarc);
+    ftau_(      &phase, &h, &delta,
+                &tt, &dtdd, &dtdh, &dddp, &mn, &ts, &toa,
                 &nphFound, phFound                );
 
-    *_tt   = tt;
-    *_dtdd = dtdd;
-    *_dtdh = dtdh;
-    *_dddp = dddp;
-    *_mn   = mn;
-    *_ts   = ts;
-    *_toa  = toa;
-    *_nph  = nphFound;
-    *_phnm = str_phFound;
+    *_tt   = &(tt[0])          ;
+    *_dtdd = &(dtdd[0])        ;
+    *_dtdh = &(dtdh[0])        ;
+    *_dddp = &(dddp[0])        ;
+    *_mn   = &(mn[0])          ;
+    *_ts   = &(ts[0])          ;
+    *_toa  = &(toa[0])         ;
+    *_nph  = (nphFound)        ;
+    *_phnm = &(str_phFound[0]) ;
     memset((char*) str_phFound, 0, MAX * 9);
     for(i = 0; i< nphFound; ++i)
     {
